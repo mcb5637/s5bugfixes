@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/mcb5637/s5xmlschema/master/entity.xsd">
+	<Logic classname="GGL::CResourceDoodadProperties" xsi:type="GGL__CResourceDoodadProperties" classid="0x9b03a097">
+		<Class>GGL::CResourceDoodad</Class>
+		<ApproachPos>
+			<X>0.000000e+000</X>
+			<Y>0.000000e+000</Y>
+		</ApproachPos>
+		<ApproachR>0.000000e+000</ApproachR>
+		<SnapTolerance>0.000000e+000</SnapTolerance>
+		<CanFloat>false</CanFloat>
+		<CanDrown>true</CanDrown>
+		<MapFileDontSave>false</MapFileDontSave>
+		<NeedsPlayer>true</NeedsPlayer>
+		<ForceNoPlayer>false</ForceNoPlayer>
+		<MaxHealth>100</MaxHealth>
+		<AdjustWalkAnimSpeed>false</AdjustWalkAnimSpeed>
+		<Exploration>0.000000e+000</Exploration>
+		<ExperiencePoints>0</ExperiencePoints>
+		<Visible>false</Visible>
+		<AccessCategory>AccessCategoryStatic</AccessCategory>
+		<DoNotExecute>false</DoNotExecute>
+		<DeleteWhenBuiltOn>false</DeleteWhenBuiltOn>
+		<DividesTwoSectors>false</DividesTwoSectors>
+		<TerrainPos1>
+			<X>0.000000e+000</X>
+			<Y>0.000000e+000</Y>
+		</TerrainPos1>
+		<TerrainPos2>
+			<X>1.000000e+000</X>
+			<Y>1.000000e+000</Y>
+		</TerrainPos2>
+		<Center>
+			<X>0.000000e+000</X>
+			<Y>0.000000e+000</Y>
+		</Center>
+		<Radius>2.000000e+002</Radius>
+		<LineStart>
+			<X>0.000000e+000</X>
+			<Y>0.000000e+000</Y>
+		</LineStart>
+		<LineEnd>
+			<X>0.000000e+000</X>
+			<Y>0.000000e+000</Y>
+		</LineEnd>
+		<ExtractTaskList></ExtractTaskList>
+		<Model1></Model1>
+		<Model2></Model2>
+	</Logic>
+	<Display classname="ED::CDisplayEntityProps" xsi:type="ED__CDisplayEntityProps" classid="0x20e25c5d">
+		<Class>ED::CDisplayStaticEntity</Class>
+		<Model>ZXBox100</Model>
+		<DrawPlayerColor>false</DrawPlayerColor>
+		<CastShadow>true</CastShadow>
+		<RenderInFoW>false</RenderInFoW>
+		<HighQualityOnly>false</HighQualityOnly>
+		<MapEditor_Rotatable>true</MapEditor_Rotatable>
+		<MapEditor_Placeable>true</MapEditor_Placeable>
+	</Display>
+</root>
