@@ -5,8 +5,6 @@
 		<Category>Military</Category>
 		<Category>Cannon</Category>
 		<Category>SplashDamage</Category>
-		<Category>TargetFilter_TargetType</Category>
-		<Category>TargetFilter_TargetTypeLeader</Category>
 		<ApproachPos>
 			<X>0.000000e+000</X>
 			<Y>0.000000e+000</Y>

@@ -4,7 +4,6 @@
 		<Class>GGL::CSettler</Class>
 		<Category>Military</Category>
 		<Category>Soldier</Category>
-		<Category>TargetFilter_TargetType</Category>
 		<ApproachPos>
 			<X>0.000000e+000</X>
 			<Y>0.000000e+000</Y>
