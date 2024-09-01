@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/mcb5637/s5xmlschema/master/tech.xsd">
+	<TecCategoryType>TC_Technologies</TecCategoryType>
+	<TimeToResearch>20</TimeToResearch>
+	<AutomaticResearch>true</AutomaticResearch>
+	<ResourceCosts>
+		<Gold>400</Gold>
+	</ResourceCosts>
+	<Conditions>
+		<RequiredTecConditions>0</RequiredTecConditions>
+		<RequiredEntityConditions>1</RequiredEntityConditions>
+		<EntityCondition>
+			<EntityType>PB_VillageCenter1</EntityType>
+			<Amount>1</Amount>
+		</EntityCondition>
+		<EntityCondition>
+			<EntityType>PB_VillageCenter2</EntityType>
+			<Amount>1</Amount>
+		</EntityCondition>
+		<EntityCondition>
+			<EntityType>PB_VillageCenter3</EntityType>
+			<Amount>1</Amount>
+		</EntityCondition>
+		<RequiredEntityCategoryConditions>0</RequiredEntityCategoryConditions>
+		<RequiredUpgradeCategoryConditions>0</RequiredUpgradeCategoryConditions>
+	</Conditions>
+	<ExplorationModifier>
+		<Value>5</Value>
+		<Operation>+</Operation>
+	</ExplorationModifier>
+	<UseForStatisticsFlag>true</UseForStatisticsFlag>
+</root>
