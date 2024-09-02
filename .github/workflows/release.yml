@@ -1,0 +1,29 @@
+name: make release
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: download bbatool
+        run: |
+          curl.exe -L -o ./bbatool/bbatool.zip https://github.com/mcb5637/bbaToolS5/releases//latest/download/Release.zip
+          tar.exe -xf ./bbatool/bbatool.zip
+          ./bbatool/bbaToolS5.exe -err -ignorehidden -autoCompression -searchDuplicates ./ ./bbatool/BugFixes.bba
+
+      - name: GH Release
+        uses: softprops/action-gh-release@v2.0.8
+        with:
+          body: latest
+          name: latest
+          tag_name: latest
+          files: ./bbatool/BugFixes.bba
+          fail_on_unmatched_files: true
+          target_commitish: ${GITHUB_SHA}
+          make_latest: true
