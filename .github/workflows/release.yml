@@ -13,6 +13,12 @@ jobs:
 
       - name: download bbatool
         run: |
+          mkdir bbatool
+          attrib +h bbatool
+          attrib +h .github
+          attrib +h .gitignore
+          attrib +h LICENSE.md
+          attrib +h README.md
           curl.exe -L -o ./bbatool/bbatool.zip https://github.com/mcb5637/bbaToolS5/releases//latest/download/Release.zip
           tar.exe -xf ./bbatool/bbatool.zip
           ./bbatool/bbaToolS5.exe -err -ignorehidden -autoCompression -searchDuplicates ./ ./bbatool/BugFixes.bba
@@ -20,7 +26,7 @@ jobs:
       - name: GH Release
         uses: softprops/action-gh-release@v2.0.8
         with:
-          body: latest
+          body_path: ./README.md
           name: latest
           tag_name: latest
           files: ./bbatool/BugFixes.bba
