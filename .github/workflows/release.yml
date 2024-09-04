@@ -35,5 +35,4 @@ jobs:
           body_path: ./README.md
           files: ./bbatool/BugFixes.bba
           fail_on_unmatched_files: true
-          target_commitish: ${GITHUB_SHA}
           make_latest: true
