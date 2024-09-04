@@ -23,7 +23,7 @@ jobs:
           attrib +h .gitignore
           attrib +h LICENSE.md
           attrib +h README.md
-          curl.exe -L -o ./bbatool/bbatool.zip https://github.com/mcb5637/bbaToolS5/releases//latest/download/publish.zip
+          curl.exe -L -o ./bbatool/bbatool.zip https://github.com/mcb5637/bbaToolS5/releases/latest/download/publish.zip
           cd ./bbatool
           tar -xf ./bbatool.zip
           cd ../

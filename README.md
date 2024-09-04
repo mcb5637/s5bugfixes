@@ -1,4 +1,4 @@
-download release here: TODO
+download release here: https://github.com/mcb5637/s5bugfixes/releases/latest/download/BugFixes.bba
 
 put into settler dir/ModPacks/
 
