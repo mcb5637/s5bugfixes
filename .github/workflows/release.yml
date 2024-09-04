@@ -19,9 +19,11 @@ jobs:
           attrib +h .gitignore
           attrib +h LICENSE.md
           attrib +h README.md
-          curl.exe -L -o ./bbatool/bbatool.zip https://github.com/mcb5637/bbaToolS5/releases//latest/download/Release.zip
-          tar.exe -xf ./bbatool/bbatool.zip
-          ./bbatool/bbaToolS5.exe -err -ignorehidden -autoCompression -searchDuplicates ./ ./bbatool/BugFixes.bba
+          curl.exe -L -o ./bbatool/bbatool.zip https://github.com/mcb5637/bbaToolS5/releases//latest/download/publish.zip
+          cd ./bbatool
+          tar -xf ./bbatool.zip
+          cd ../
+          ./bbatool/publish/win32/bbaToolS5.exe -err -ignorehidden -autoCompression -searchDuplicates ./ ./bbatool/BugFixes.bba
 
       - name: GH Release
         uses: softprops/action-gh-release@v2.0.8
