@@ -33,8 +33,6 @@ jobs:
         uses: softprops/action-gh-release@v2.0.8
         with:
           body_path: ./README.md
-          name: latest
-          tag_name: latest
           files: ./bbatool/BugFixes.bba
           fail_on_unmatched_files: true
           target_commitish: ${GITHUB_SHA}
