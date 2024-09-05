@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/mcb5637/s5xmlschema/master/tech.xsd">
+	<TecCategoryType>TC_BuildingUpgrades</TecCategoryType>
+	<TimeToResearch>3</TimeToResearch>
+	<AutomaticResearch>true</AutomaticResearch>
+	<ResourceCosts>
+		<Clay>100</Clay>
+	</ResourceCosts>
+	<Conditions>
+		<RequiredTecConditions>0</RequiredTecConditions>
+		<RequiredEntityConditions>0</RequiredEntityConditions>
+		<RequiredEntityCategoryConditions>0</RequiredEntityCategoryConditions>
+		<RequiredUpgradeCategoryConditions>3</RequiredUpgradeCategoryConditions>
+		<UpgradeCategoryCondition>
+			<UpgradeCategory>Blacksmith</UpgradeCategory>
+			<Amount>1</Amount>
+		</UpgradeCategoryCondition>
+		<UpgradeCategoryCondition>
+			<UpgradeCategory>Sawmill</UpgradeCategory>
+			<Amount>1</Amount>
+		</UpgradeCategoryCondition>
+		<UpgradeCategoryCondition>
+			<UpgradeCategory>Alchemist</UpgradeCategory>
+			<Amount>1</Amount>
+		</UpgradeCategoryCondition>
+		<UpgradeCategoryCondition>
+			<UpgradeCategory>StoneMason</UpgradeCategory>
+			<Amount>1</Amount>
+		</UpgradeCategoryCondition>
+		<UpgradeCategoryCondition>
+			<UpgradeCategory>Brickworks</UpgradeCategory>
+			<Amount>1</Amount>
+		</UpgradeCategoryCondition>
+		<UpgradeCategoryCondition>
+			<UpgradeCategory>GunsmithWorkshop</UpgradeCategory>
+			<Amount>1</Amount>
+		</UpgradeCategoryCondition>
+		<UpgradeCategoryCondition>
+			<UpgradeCategory>Bank</UpgradeCategory>
+			<Amount>1</Amount>
+		</UpgradeCategoryCondition>
+	</Conditions>
+	<UseForStatisticsFlag>false</UseForStatisticsFlag>
+</root>

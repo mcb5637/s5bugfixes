@@ -5,7 +5,7 @@
 		<Category>Military</Category>
 		<Category>Melee</Category>
 		<Category>Sword</Category>
-		<Category>Soldier</Category>
+		<Category>Leader</Category>
 		<ApproachPos>
 			<X>0.000000e+000</X>
 			<Y>0.000000e+000</Y>
@@ -17,10 +17,10 @@
 		<MapFileDontSave>false</MapFileDontSave>
 		<NeedsPlayer>true</NeedsPlayer>
 		<ForceNoPlayer>false</ForceNoPlayer>
-		<MaxHealth>150</MaxHealth>
+		<MaxHealth>200</MaxHealth>
 		<AdjustWalkAnimSpeed>true</AdjustWalkAnimSpeed>
 		<Exploration>2.000000e+001</Exploration>
-		<ExperiencePoints>15</ExperiencePoints>
+		<ExperiencePoints>30</ExperiencePoints>
 		<Visible>true</Visible>
 		<AccessCategory>AccessCategorySettler</AccessCategory>
 		<DoNotExecute>false</DoNotExecute>
@@ -72,8 +72,8 @@
 				<Knowledge>0.000000e+000</Knowledge>
 				<Faith>0.000000e+000</Faith>
 			</Cost>
-			<Type>CU_BanditSoldierSword2</Type>
-			<Category>SoldierBandit</Category>
+			<Type>CU_BanditLeaderSword2</Type>
+			<Category>LeaderBandit</Category>
 		</Upgrade>
 		<ModifyExploration>
 		</ModifyExploration>
@@ -101,33 +101,33 @@
 	</Logic>
 	<Display classname="ED::CDisplayEntityProps" xsi:type="ED__CDisplayEntityProps" classid="0x20e25c5d">
 		<Class>GD::CDisplaySettler</Class>
-		<Model>CU_SoldierOutlaw1</Model>
+		<Model>CU_LeaderOutlaw1</Model>
 		<DrawPlayerColor>true</DrawPlayerColor>
 		<CastShadow>true</CastShadow>
 		<RenderInFoW>false</RenderInFoW>
 		<HighQualityOnly>false</HighQualityOnly>
 		<MapEditor_Rotatable>true</MapEditor_Rotatable>
 		<MapEditor_Placeable>true</MapEditor_Placeable>
-		<Anim>CU_SoldierOutlaw1_Walk</Anim>
-		<Anim>CU_SoldierOutlaw1_Idle1</Anim>
-		<Anim>CU_SoldierOutlaw1_Idle2</Anim>
-		<Anim>CU_SoldierOutlaw1_Idle3</Anim>
-		<Anim>CU_SoldierOutlaw1_Idle4</Anim>
-		<Anim>CU_SoldierOutlaw1_Idle5</Anim>
-		<Anim>CU_SoldierOutlaw1_Idle6</Anim>
-		<Anim>CU_SoldierOutlaw1_IdleAttack1</Anim>
-		<Anim>CU_SoldierOutlaw1_Dying1</Anim>
-		<Anim>CU_SoldierOutlaw1_Attack1</Anim>
-		<Anim>CU_SoldierOutlaw1_Attack2</Anim>
-		<Anim>CU_SoldierOutlaw1_Finish</Anim>
-		<Anim>CU_SoldierOutlaw1_Hit</Anim>
-		<Anim>CU_SoldierOutlaw1_Run1</Anim>
+		<Anim>CU_LeaderOutlaw1_Walk</Anim>
+		<Anim>CU_LeaderOutlaw1_Run1</Anim>
+		<Anim>CU_LeaderOutlaw1_Idle1</Anim>
+		<Anim>CU_LeaderOutlaw1_Idle2</Anim>
+		<Anim>CU_LeaderOutlaw1_Idle3</Anim>
+		<Anim>CU_LeaderOutlaw1_Idle4</Anim>
+		<Anim>CU_LeaderOutlaw1_Idle5</Anim>
+		<Anim>CU_LeaderOutlaw1_Idle6</Anim>
+		<Anim>CU_LeaderOutlaw1_IdleAttack1</Anim>
+		<Anim>CU_LeaderOutlaw1_Attack1</Anim>
+		<Anim>CU_LeaderOutlaw1_Attack2</Anim>
+		<Anim>CU_LeaderOutlaw1_Finish</Anim>
+		<Anim>CU_LeaderOutlaw1_Hit</Anim>
+		<Anim>CU_LeaderOutlaw1_Dying1</Anim>
 	</Display>
 	<Behavior>
 		<Logic classname="GGL::CGLAnimationBehaviorExProps" xsi:type="GGL__CGLAnimationBehaviorExProps" classid="0x2ae74258">
 			<Class>GGL::CGLBehaviorAnimationEx</Class>
 			<SuspensionAnimation></SuspensionAnimation>
-			<AnimSet>SET_CU_SOLDIEROUTLAW1</AnimSet>
+			<AnimSet>SET_CU_LEADEROUTLAW1</AnimSet>
 		</Logic>
 		<Display classname="ED::CBehaviorProps" xsi:type="ED__CBehaviorProps" classid="0x1f78996d">
 			<Class>ED::CDisplayBehaviorAnimation</Class>
@@ -138,7 +138,7 @@
 			<Class>GGL::CSettlerMovement</Class>
 			<Speed>3.600000e+002</Speed>
 			<RotationSpeed>3.000000e+001</RotationSpeed>
-			<MoveTaskList>TL_MILITARY_WALK</MoveTaskList>
+			<MoveTaskList>TL_LEADER_WALK</MoveTaskList>
 			<MoveIdleAnim></MoveIdleAnim>
 		</Logic>
 		<Display classname="ED::CBehaviorProps" xsi:type="ED__CBehaviorProps" classid="0x1f78996d">
@@ -151,17 +151,17 @@
 		</Logic>
 	</Behavior>
 	<Behavior>
-		<Logic classname="GGL::CSoldierBehaviorProps" xsi:type="GGL__CSoldierBehaviorProps" classid="0x186da78d">
-			<Class>GGL::CSoldierBehavior</Class>
+		<Logic classname="GGL::CLeaderBehaviorProps" xsi:type="GGL__CLeaderBehaviorProps" classid="0xfa0ac28d">
+			<Class>GGL::CLeaderBehavior</Class>
 			<BattleTaskList>TL_BATTLE</BattleTaskList>
-			<NormalAttackAnim1>CU_SoldierOutlaw1_Attack1</NormalAttackAnim1>
-			<NormalAttackAnim2>CU_SoldierOutlaw1_Attack2</NormalAttackAnim2>
-			<CounterAttackAnim>CU_SoldierOutlaw1_Attack2</CounterAttackAnim>
-			<FinishingMoveAnim>CU_SoldierOutlaw1_Attack1</FinishingMoveAnim>
-			<MissAttackAnim>CU_SoldierOutlaw1_Attack1</MissAttackAnim>
-			<BattleIdleAnim>CU_SoldierOutlaw1_Idle1</BattleIdleAnim>
-			<BattleWalkAnim>CU_SoldierOutlaw1_Run1</BattleWalkAnim>
-			<HitAnim>CU_SoldierOutlaw1_Hit</HitAnim>
+			<NormalAttackAnim1>CU_LeaderOutlaw1_Attack1</NormalAttackAnim1>
+			<NormalAttackAnim2>CU_LeaderOutlaw1_Attack1</NormalAttackAnim2>
+			<CounterAttackAnim>CU_LeaderOutlaw1_Attack1</CounterAttackAnim>
+			<FinishingMoveAnim>CU_LeaderOutlaw1_Attack1</FinishingMoveAnim>
+			<MissAttackAnim>CU_LeaderOutlaw1_Attack1</MissAttackAnim>
+			<BattleIdleAnim>CU_LeaderOutlaw1_IdleAttack1</BattleIdleAnim>
+			<BattleWalkAnim>CU_LeaderOutlaw1_Run1</BattleWalkAnim>
+			<HitAnim>CU_LeaderOutlaw1_Hit</HitAnim>
 			<DamageClass>DC_Strike</DamageClass>
 			<DamageAmount>12</DamageAmount>
 			<MaxRandomDamageBonus>2</MaxRandomDamageBonus>
@@ -174,15 +174,23 @@
 			<MissChance>0</MissChance>
 			<MaxRange>2.000000e+002</MaxRange>
 			<MinRange>0.000000e+000</MinRange>
+			<SoldierType>CU_BanditSoldierSword1</SoldierType>
+			<BarrackUpgradeCategory>Barracks</BarrackUpgradeCategory>
+			<HomeRadius>2000</HomeRadius>
+			<HealingPoints>5</HealingPoints>
+			<HealingSeconds>3</HealingSeconds>
+			<AutoAttackRange>2.000000e+003</AutoAttackRange>
+			<UpkeepCost>0.000000e+000</UpkeepCost>
 		</Logic>
 	</Behavior>
 	<Behavior>
-		<Logic classname="GGL::CFormationBehaviorProperties" xsi:type="GGL__CFormationBehaviorProperties" classid="0xb55a9de7">
-			<Class>GGL::CFormationBehavior</Class>
-			<IdleAnim>
-				<AnimID>CU_SoldierOutlaw1_Idle1</AnimID>
-				<Frequency>1</Frequency>
-			</IdleAnim>
+		<Logic classname="GGL::CLimitedAttachmentBehaviorProperties" xsi:type="GGL__CLimitedAttachmentBehaviorProperties" classid="0xe4461e77">
+			<Class>GGL::CLimitedAttachmentBehavior</Class>
+			<Attachment>
+				<Type>ATTACHMENT_LEADER_SOLDIER</Type>
+				<Limit>8</Limit>
+				<IsActive>true</IsActive>
+			</Attachment>
 		</Logic>
 	</Behavior>
 	<Behavior>

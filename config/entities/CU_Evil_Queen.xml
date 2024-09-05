@@ -4,8 +4,7 @@
 		<Class>GGL::CSettler</Class>
 		<Category>Military</Category>
 		<Category>Melee</Category>
-		<Category>Sword</Category>
-		<Category>Soldier</Category>
+		<Category>Hero</Category>
 		<ApproachPos>
 			<X>0.000000e+000</X>
 			<Y>0.000000e+000</Y>
@@ -17,10 +16,10 @@
 		<MapFileDontSave>false</MapFileDontSave>
 		<NeedsPlayer>true</NeedsPlayer>
 		<ForceNoPlayer>false</ForceNoPlayer>
-		<MaxHealth>150</MaxHealth>
+		<MaxHealth>600</MaxHealth>
 		<AdjustWalkAnimSpeed>true</AdjustWalkAnimSpeed>
-		<Exploration>2.000000e+001</Exploration>
-		<ExperiencePoints>15</ExperiencePoints>
+		<Exploration>2.200000e+001</Exploration>
+		<ExperiencePoints>20</ExperiencePoints>
 		<Visible>true</Visible>
 		<AccessCategory>AccessCategorySettler</AccessCategory>
 		<DoNotExecute>false</DoNotExecute>
@@ -47,8 +46,8 @@
 		</Cost>
 		<BuildFactor>1.000000e+000</BuildFactor>
 		<RepairFactor>1.000000e+000</RepairFactor>
-		<ArmorClass>ArmorClassLeather</ArmorClass>
-		<ArmorAmount>2</ArmorAmount>
+		<ArmorClass>ArmorClassFur</ArmorClass>
+		<ArmorAmount>5</ArmorAmount>
 		<DodgeChance>0</DodgeChance>
 		<IdleTaskList>TL_MILITARY_IDLE</IdleTaskList>
 		<Upgrade>
@@ -72,8 +71,8 @@
 				<Knowledge>0.000000e+000</Knowledge>
 				<Faith>0.000000e+000</Faith>
 			</Cost>
-			<Type>CU_BanditSoldierSword2</Type>
-			<Category>SoldierBandit</Category>
+			<Type></Type>
+			<Category></Category>
 		</Upgrade>
 		<ModifyExploration>
 		</ModifyExploration>
@@ -96,38 +95,36 @@
 		<ModifyGroupLimit>
 		</ModifyGroupLimit>
 		<AttractionSlots>1</AttractionSlots>
-		<Fearless>false</Fearless>
-		<Convertible>true</Convertible>
+		<Fearless>true</Fearless>
+		<Convertible>false</Convertible>
 	</Logic>
 	<Display classname="ED::CDisplayEntityProps" xsi:type="ED__CDisplayEntityProps" classid="0x20e25c5d">
 		<Class>GD::CDisplaySettler</Class>
-		<Model>CU_SoldierOutlaw1</Model>
+		<Model>CU_Evil_Queen</Model>
 		<DrawPlayerColor>true</DrawPlayerColor>
 		<CastShadow>true</CastShadow>
 		<RenderInFoW>false</RenderInFoW>
 		<HighQualityOnly>false</HighQualityOnly>
 		<MapEditor_Rotatable>true</MapEditor_Rotatable>
 		<MapEditor_Placeable>true</MapEditor_Placeable>
-		<Anim>CU_SoldierOutlaw1_Walk</Anim>
-		<Anim>CU_SoldierOutlaw1_Idle1</Anim>
-		<Anim>CU_SoldierOutlaw1_Idle2</Anim>
-		<Anim>CU_SoldierOutlaw1_Idle3</Anim>
-		<Anim>CU_SoldierOutlaw1_Idle4</Anim>
-		<Anim>CU_SoldierOutlaw1_Idle5</Anim>
-		<Anim>CU_SoldierOutlaw1_Idle6</Anim>
-		<Anim>CU_SoldierOutlaw1_IdleAttack1</Anim>
-		<Anim>CU_SoldierOutlaw1_Dying1</Anim>
-		<Anim>CU_SoldierOutlaw1_Attack1</Anim>
-		<Anim>CU_SoldierOutlaw1_Attack2</Anim>
-		<Anim>CU_SoldierOutlaw1_Finish</Anim>
-		<Anim>CU_SoldierOutlaw1_Hit</Anim>
-		<Anim>CU_SoldierOutlaw1_Run1</Anim>
+		<Anim>CU_Evil_Queen_Walk</Anim>
+		<Anim>CU_Evil_Queen_Idle1</Anim>
+		<Anim>CU_Evil_Queen_IdleAttack1</Anim>
+		<Anim>CU_Evil_Queen_Attack1</Anim>
+		<Anim>CU_Evil_Queen_Attack2</Anim>
+		<Anim>CU_Evil_Queen_Finish</Anim>
+		<Anim>CU_Evil_Queen_Dying1</Anim>
+		<Anim>CU_Evil_Queen_Run1</Anim>
+		<Anim>CU_Evil_Queen_Hit</Anim>
+		<Anim>CU_Evil_Queen_PoisonAttack</Anim>
+		<Anim>CU_Evil_Queen_PoisonDart</Anim>
+		<Anim>CU_Evil_Queen_Dead</Anim>
 	</Display>
 	<Behavior>
 		<Logic classname="GGL::CGLAnimationBehaviorExProps" xsi:type="GGL__CGLAnimationBehaviorExProps" classid="0x2ae74258">
 			<Class>GGL::CGLBehaviorAnimationEx</Class>
 			<SuspensionAnimation></SuspensionAnimation>
-			<AnimSet>SET_CU_SOLDIEROUTLAW1</AnimSet>
+			<AnimSet>SET_CU_EVIL_QUEEN</AnimSet>
 		</Logic>
 		<Display classname="ED::CBehaviorProps" xsi:type="ED__CBehaviorProps" classid="0x1f78996d">
 			<Class>ED::CDisplayBehaviorAnimation</Class>
@@ -136,9 +133,9 @@
 	<Behavior>
 		<Logic classname="EGL::CMovementBehaviorProps" xsi:type="EGL__CMovementBehaviorProps" classid="0x2fcfda17">
 			<Class>GGL::CSettlerMovement</Class>
-			<Speed>3.600000e+002</Speed>
+			<Speed>4.000000e+002</Speed>
 			<RotationSpeed>3.000000e+001</RotationSpeed>
-			<MoveTaskList>TL_MILITARY_WALK</MoveTaskList>
+			<MoveTaskList>TL_LEADER_WALK</MoveTaskList>
 			<MoveIdleAnim></MoveIdleAnim>
 		</Logic>
 		<Display classname="ED::CBehaviorProps" xsi:type="ED__CBehaviorProps" classid="0x1f78996d">
@@ -151,20 +148,20 @@
 		</Logic>
 	</Behavior>
 	<Behavior>
-		<Logic classname="GGL::CSoldierBehaviorProps" xsi:type="GGL__CSoldierBehaviorProps" classid="0x186da78d">
-			<Class>GGL::CSoldierBehavior</Class>
-			<BattleTaskList>TL_BATTLE</BattleTaskList>
-			<NormalAttackAnim1>CU_SoldierOutlaw1_Attack1</NormalAttackAnim1>
-			<NormalAttackAnim2>CU_SoldierOutlaw1_Attack2</NormalAttackAnim2>
-			<CounterAttackAnim>CU_SoldierOutlaw1_Attack2</CounterAttackAnim>
-			<FinishingMoveAnim>CU_SoldierOutlaw1_Attack1</FinishingMoveAnim>
-			<MissAttackAnim>CU_SoldierOutlaw1_Attack1</MissAttackAnim>
-			<BattleIdleAnim>CU_SoldierOutlaw1_Idle1</BattleIdleAnim>
-			<BattleWalkAnim>CU_SoldierOutlaw1_Run1</BattleWalkAnim>
-			<HitAnim>CU_SoldierOutlaw1_Hit</HitAnim>
-			<DamageClass>DC_Strike</DamageClass>
-			<DamageAmount>12</DamageAmount>
-			<MaxRandomDamageBonus>2</MaxRandomDamageBonus>
+		<Logic classname="GGL::CLeaderBehaviorProps" xsi:type="GGL__CLeaderBehaviorProps" classid="0xfa0ac28d">
+			<Class>GGL::CLeaderBehavior</Class>
+			<BattleTaskList>TL_BATTLE_CLAW</BattleTaskList>
+			<NormalAttackAnim1>CU_Evil_Queen_Attack1</NormalAttackAnim1>
+			<NormalAttackAnim2>CU_Evil_Queen_Attack2</NormalAttackAnim2>
+			<CounterAttackAnim>CU_Evil_Queen_Attack1</CounterAttackAnim>
+			<FinishingMoveAnim>CU_Evil_Queen_Finish</FinishingMoveAnim>
+			<MissAttackAnim>CU_Evil_Queen_Attack1</MissAttackAnim>
+			<BattleIdleAnim>CU_Evil_Queen_Attack1</BattleIdleAnim>
+			<BattleWalkAnim>CU_Evil_Queen_Run1</BattleWalkAnim>
+			<HitAnim>CU_Evil_Queen_Hit</HitAnim>
+			<DamageClass>DC_Evil</DamageClass>
+			<DamageAmount>22</DamageAmount>
+			<MaxRandomDamageBonus>4</MaxRandomDamageBonus>
 			<DamageRange>-1.000000e+000</DamageRange>
 			<ProjectileEffectID></ProjectileEffectID>
 			<ProjectileOffsetFront>0.000000e+000</ProjectileOffsetFront>
@@ -174,21 +171,53 @@
 			<MissChance>0</MissChance>
 			<MaxRange>2.000000e+002</MaxRange>
 			<MinRange>0.000000e+000</MinRange>
-		</Logic>
-	</Behavior>
-	<Behavior>
-		<Logic classname="GGL::CFormationBehaviorProperties" xsi:type="GGL__CFormationBehaviorProperties" classid="0xb55a9de7">
-			<Class>GGL::CFormationBehavior</Class>
-			<IdleAnim>
-				<AnimID>CU_SoldierOutlaw1_Idle1</AnimID>
-				<Frequency>1</Frequency>
-			</IdleAnim>
+			<SoldierType></SoldierType>
+			<BarrackUpgradeCategory></BarrackUpgradeCategory>
+			<HomeRadius>3.000000e+003</HomeRadius>
+			<HealingPoints>8</HealingPoints>
+			<HealingSeconds>2</HealingSeconds>
+			<AutoAttackRange>2.200000e+003</AutoAttackRange>
+			<UpkeepCost>0.000000e+000</UpkeepCost>
 		</Logic>
 	</Behavior>
 	<Behavior>
 		<Logic classname="GGL::CGLBehaviorPropsDying" xsi:type="GGL__CGLBehaviorPropsDying" classid="0x7653c1d">
 			<Class>GGL::CGLBehaviorDying</Class>
-			<DyingTaskList>TL_DIE</DyingTaskList>
+			<DyingTaskList>TL_DIE_HERO</DyingTaskList>
+		</Logic>
+	</Behavior>
+	<Behavior>
+		<Logic classname="GGL::CHeroBehaviorProps" xsi:type="GGL__CHeroBehaviorProps" classid="0xd8c7955d">
+			<Class>GGL::CHeroBehavior</Class>
+		</Logic>
+	</Behavior>
+	<Behavior>
+		<Logic classname="GGL::CShurikenAbilityProps" xsi:type="GGL__CShurikenAbilityProps" classid="0xec73cadd">
+			<Class>GGL::CShurikenAbility</Class>
+			<RechargeTimeSeconds>30</RechargeTimeSeconds>
+			<TaskList>TL_SHURIKEN_SPECIAL</TaskList>
+			<Animation>CU_Evil_Queen_PoisonDart</Animation>
+			<Range>3.000000e+003</Range>
+			<MaxArcDegree>9.000000e+001</MaxArcDegree>
+			<NumberShuriken>10</NumberShuriken>
+			<ProjectileType>FXKalaArrow</ProjectileType>
+			<ProjectileOffsetHeight>1.200000e+002</ProjectileOffsetHeight>
+			<ProjectileOffsetFront>0.000000e+000</ProjectileOffsetFront>
+			<ProjectileOffsetRight>0.000000e+000</ProjectileOffsetRight>
+			<DamageClass>DC_Hero</DamageClass>
+			<DamageAmount>20</DamageAmount>
+		</Logic>
+	</Behavior>
+	<Behavior>
+		<Logic classname="GGL::CCircularAttackProps" xsi:type="GGL__CCircularAttackProps" classid="0xe3fb1c6d">
+			<Class>GGL::CCircularAttack</Class>
+			<RechargeTimeSeconds>110</RechargeTimeSeconds>
+			<TaskList>TL_BATTLE_SPECIAL</TaskList>
+			<Animation>CU_Evil_Queen_PoisonAttack</Animation>
+			<DamageClass>DC_Hero</DamageClass>
+			<DamageAmount>25</DamageAmount>
+			<Range>1.200000e+003</Range>
+			<Effect>FXKalaPoison</Effect>
 		</Logic>
 	</Behavior>
 </root>
