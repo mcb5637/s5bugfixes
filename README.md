@@ -13,6 +13,7 @@ bugs fixed:
 	- heal rangedeffect heals troop hp
 	- snipe task now actually fires a projectile
 	- set tasklist can no longer cancel uncancelable tasks
+	- foundries producing cannons block the cannons future VC space
 - xml:
 	- armor of soldiers
 	- cannon3/4 damageclass
@@ -20,7 +21,7 @@ bugs fixed:
 	- reload bug (rapidfire)
 	- fur damageclass factor
 	- town guard tech
-	- hq upgrade 2 building requirements
+	- hq upgrade 2 building requirements (bank now counts, but different levels of the same building don't)
 	- battleserf affected by serf techs
 	- CU_Thief now responds to move commands
 	- worker type of tavern2
@@ -34,3 +35,4 @@ bugs fixed:
 	- overtimes button texture
 	- evil music now is able to get triggered
 	- selecting a battleserf no longer permanetly disables formations
+	- overtimes button texture

@@ -2,18 +2,19 @@ ModBugfixes = {}
 function ModBugfixes.Init()
 	CppLogic.Entity.Settler.EnableConversionHook()
 	CppLogic.Logic.SetPaydayCallback()
-	CppLogic.Combat.EnableAoEProjectileFix() -- aoe projektile beachten damage/armorclass und schadensboni durch techs/helden
-	CppLogic.Logic.EnableAllHurtEntityTrigger(true) -- hurtentity trigger auch ausführen, wenn der angreifer tot ist
-	CppLogic.Combat.EnableCamoFix() -- camo wird nicht beendet, wenn projektile treffen
-	CppLogic.Logic.EnableExperienceClassFix(true) -- level 1 gibt boni, misschance boni funktionieren
-	CppLogic.Logic.EnableBuildOnMovementFix(true) -- auf siedlern bauen bricht bewegung nicht mehr ab
-	CppLogic.Effect.EnableEffectTriggers(true) -- effect created
+	CppLogic.Combat.EnableAoEProjectileFix()
+	CppLogic.Logic.EnableAllHurtEntityTrigger(true)
+	CppLogic.Combat.EnableCamoFix()
+	CppLogic.Logic.EnableExperienceClassFix(true)
+	CppLogic.Logic.EnableBuildOnMovementFix(true)
+	CppLogic.Effect.EnableEffectTriggers(true)
 	CppLogic.Logic.EnableResourceTriggers(true, false)
 	CppLogic.Logic.EnableSettlerBuyTriggers()
-	CppLogic.Logic.SetLeadersRegenerateTroopHealth(true) -- truppen hp regenerieren
-	CppLogic.Entity.Settler.EnableRangedEffectSoldierHeal(true) -- truppen hp von salim geheilt
+	CppLogic.Logic.SetLeadersRegenerateTroopHealth(true)
+	CppLogic.Entity.Settler.EnableRangedEffectSoldierHeal(true)
 	CppLogic.Logic.FixSnipeDamage(nil)
 	CppLogic.Logic.TaskListSetChangeTaskListCheckUncancelable(true)
+	CppLogic.Logic.EnableCannonInProgressAttraction(true)
 
 	ModBugfixes.InitUI()
 
@@ -87,8 +88,8 @@ function ModBugfixes.GameCallback_GUI_SelectionChangedOverride()
 	if not e then
 		return
 	end
-	if Logic.IsBuilding(e) == 1 and Logic.IsConstructionComplete(e) == 1 and Logic.GetUpgradeCategoryByBuildingType(Logic.GetEntityType(e)) ==
-					UpgradeCategories.Tavern then
+	if Logic.IsBuilding(e) == 1 and Logic.IsConstructionComplete(e) == 1 and Logic.GetUpgradeCategoryByBuildingType(Logic.GetEntityType(e))
+					== UpgradeCategories.Tavern then
 		XGUIEng.ShowWidget(gvGUI_WidgetID.BuildingTabs, 1)
 		XGUIEng.UnHighLightGroup(gvGUI_WidgetID.InGame, "BuildingMenuGroup")
 		XGUIEng.HighLightButton(gvGUI_WidgetID.ToBuildingSettlersMenu, 1)
