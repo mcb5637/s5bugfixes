@@ -11,6 +11,8 @@ bugs fixed:
 - fur damageclass factor
 - town guard tech
 - hq upgrade 2 building requirements
+- battleserf affected by serf techs
+- CU_Thief now responds to move commands
 - worker type of tavern2
 - enabled tavern eater tab
 - bandit leader sword onscreen icon, barracks upgradecategory
@@ -20,3 +22,4 @@ bugs fixed:
 - attack move button location
 - overtimes button texture
 - evil music now is able to get triggered
+- selecting a battleserf no longer permanetly disables formations

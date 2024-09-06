@@ -84,7 +84,10 @@ function ModBugfixes.GameCallback_GUI_SelectionChangedOverride()
 	ModBugfixes.GameCallback_GUI_SelectionChanged()
 
 	local e = GUI.GetSelectedEntity()
-	if e and Logic.IsBuilding(e) == 1 and Logic.IsConstructionComplete(e) == 1 and Logic.GetUpgradeCategoryByBuildingType(Logic.GetEntityType(e)) ==
+	if not e then
+		return
+	end
+	if Logic.IsBuilding(e) == 1 and Logic.IsConstructionComplete(e) == 1 and Logic.GetUpgradeCategoryByBuildingType(Logic.GetEntityType(e)) ==
 					UpgradeCategories.Tavern then
 		XGUIEng.ShowWidget(gvGUI_WidgetID.BuildingTabs, 1)
 		XGUIEng.UnHighLightGroup(gvGUI_WidgetID.InGame, "BuildingMenuGroup")
@@ -92,6 +95,8 @@ function ModBugfixes.GameCallback_GUI_SelectionChangedOverride()
 
 		XGUIEng.ShowWidget(gvGUI_WidgetID.ActivateOvertimes, 0)
 		XGUIEng.ShowWidget(gvGUI_WidgetID.QuitOvertimes, 0)
+	elseif Logic.IsLeader(e) == 1 and Logic.GetEntityType(e) ~= Entities.PU_BattleSerf then
+		XGUIEng.ShowWidget("Commands_Leader", 1)
 	end
 end
 
