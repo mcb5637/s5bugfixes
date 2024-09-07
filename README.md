@@ -28,6 +28,7 @@ bugs fixed:
 	- bandit leader sword onscreen icon, barracks upgradecategory
 	- kala, thief armorclass
 	- beautification ucat entry (was causing wrong sell cost)
+	- diverse model shadow/selection texture fixes
 - lua:
 	- enabled tavern eater tab
 	- soldier display in leader UI
@@ -36,3 +37,6 @@ bugs fixed:
 	- evil music now is able to get triggered
 	- selecting a battleserf no longer permanetly disables formations
 	- overtimes button texture
+	- erec ability TT typo
+	- archery tech effect TT matches effect
+	- uni standingarmy/tactics TT unlocks formations

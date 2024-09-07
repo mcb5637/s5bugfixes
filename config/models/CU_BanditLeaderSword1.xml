@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/mcb5637/s5xmlschema/master/model.xsd">
+	<CastShadow>true</CastShadow>
+	<DoNotDestroyHierarchy>false</DoNotDestroyHierarchy>
+	<Effect>SettlerPlayerColorSpecular</Effect>
+	<HasUVAnim>false</HasUVAnim>
+	<OcclusionCaster>false</OcclusionCaster>
+	<OcclusionReceiver>true</OcclusionReceiver>
+	<OnePassAlphaBlendingDistance>0.000000e+000</OnePassAlphaBlendingDistance>
+	<OrnamentalItemEffect></OrnamentalItemEffect>
+	<OrnamentalItem>false</OrnamentalItem>
+	<SelectionOffsetX>0.000000e+000</SelectionOffsetX>
+	<SelectionOffsetY>0.000000e+000</SelectionOffsetY>
+	<SelectionRadius>80</SelectionRadius>
+	<SelectionTexture></SelectionTexture>
+	<ShareShadowRaster>false</ShareShadowRaster>
+	<TwoPassAlphaBlending>false</TwoPassAlphaBlending>
+	<AlphaBlendHighQualityOnly>false</AlphaBlendHighQualityOnly>
+	<UseAlphaBlending>false</UseAlphaBlending>
+	<UseSurfaceHeight>false</UseSurfaceHeight>
+	<TerrainLightColorPortion>0.000000e+000</TerrainLightColorPortion>
+	<TerrainVertexColorPortion>0.000000e+000</TerrainVertexColorPortion>
+	<DefaultAnimID></DefaultAnimID>
+</root>
