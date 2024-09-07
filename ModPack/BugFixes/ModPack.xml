@@ -2,7 +2,7 @@
 <root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/mcb5637/s5xmlschema/master/modpack.xsd">
 	<LoaderPath>Data/ModPack/BugFixes/ModPackLoader.lua</LoaderPath>
 	<ScriptPath>Data/ModPack/BugFixes/ScriptLoader.lua</ScriptPath>
-	<Version>1</Version>
+	<Version>1.0.0</Version>
 	<DataMod>true</DataMod>
 	<ScriptMod>true</ScriptMod>
 	<MainmenuMod>false</MainmenuMod>

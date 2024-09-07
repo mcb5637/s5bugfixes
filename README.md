@@ -29,6 +29,7 @@ bugs fixed:
 	- kala, thief armorclass
 	- beautification ucat entry (was causing wrong sell cost)
 	- diverse model shadow/selection texture fixes
+	- XD_BuildBlockScriptEntity no longer disappears when buolding nearby
 - lua:
 	- enabled tavern eater tab
 	- soldier display in leader UI
