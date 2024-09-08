@@ -38,6 +38,9 @@ bugs fixed:
 	- evil music now is able to get triggered
 	- selecting a battleserf no longer permanetly disables formations
 	- overtimes button texture
-	- erec ability TT typo
-	- archery tech effect TT matches effect
-	- uni standingarmy/tactics TT unlocks formations
+- StringTableTexts:
+	- de:
+		- erec ability TT typo
+		- archery tech TT matches effect
+		- uni standingarmy/tactics TT unlocks formations
+		- PB_GunsmithWorkshop1 name

@@ -27,20 +27,10 @@ function ModBugfixes.Init()
 	ModBugfixes.GameCallback_SettlerKilled = GameCallback_SettlerKilled
 	GameCallback_SettlerKilled = ModBugfixes.GameCallback_SettlerKilledOverride
 
-	-- Erec (dadurch statt dadruch)
-	CppLogic.Logic.SetStringTableText("command_auraofwar", "@color:180,180,180,255 Aura der Stärke @cr @color:255,255,255,255 Erec ruft seine Männer zur Disziplin auf. Sie schlagen dadurch härter zu.")
-	-- Meisterschütze (Schützen laufen jetzt schneller)
-	CppLogic.Logic.SetStringTableText("BetterTrainingArchery_disabled", "@color:180,180,180,255 Meisterschütze @cr @color:255,255,255,255 @color:255,204,51,255 benötigt: @color:255,255,255,255 Schießanlage @cr @color:255,204,51,255 ermöglicht: @color:255,255,255,255 Schützen und Scharfschützen laufen schneller.")
-	CppLogic.Logic.SetStringTableText("BetterTrainingArchery_normal", "@color:180,180,180,255 Meisterschütze @cr @color:255,255,255,255 @color:255,204,51,255 ermöglicht: @color:255,255,255,255 Schützen und Scharfschützen laufen schneller.")
-	CppLogic.Logic.SetStringTableText("BetterTrainingArchery_researched", "@color:180,180,180,255 Meisterschütze @cr @color:255,255,255,255 Eure Schützen und Scharfschützen sind nun meisterhafte Läufer!")
-	-- Stehendes Heer (Schaltet keine Formation mehr frei)
-	CppLogic.Logic.SetStringTableText("StandingArmy_disabled", "@color:180,180,180,255 Stehendes Heer  @cr @color:255,204,51,255 benötigt: @color:255,255,255,255 Wehrpflicht, Festung @cr @color:255,204,51,255 ermöglicht: @color:255,255,255,255 Schießplatz, Dario Statue")
-	CppLogic.Logic.SetStringTableText("StandingArmy_normal", "@color:180,180,180,255 Stehendes Heer  @cr @color:255,204,51,255 ermöglicht: @color:255,255,255,255 Schießplatz, Dario Statue")
-	CppLogic.Logic.SetStringTableText("StandingArmy_researched", "@color:180,180,180,255 Stehendes Heer  @cr @color:255,255,255,255 Nun könnt Ihr Schießplätze bauen und dort Schützen rekrutieren.")
-	-- Taktiken (Schaltet Formationen frei)
-	CppLogic.Logic.SetStringTableText("Tactics_disabled", "@color:180,180,180,255 Taktiken  @cr @color:255,204,51,255 benötigt: @color:255,255,255,255 Stehendes Heer, Universität @cr @color:255,204,51,255 ermöglicht: @color:255,255,255,255 Stall, taktische Karte, Obelisk, Kampfformationen")
-	CppLogic.Logic.SetStringTableText("Tactics_normal", "@color:180,180,180,255 Taktiken  @cr @color:255,204,51,255 ermöglicht: @color:255,255,255,255 Stall, taktische Karte, Obelisk, Kampfformationen")
-	CppLogic.Logic.SetStringTableText("Tactics_researched", "@color:180,180,180,255 Taktiken  @cr @color:255,255,255,255 Nun könnt Ihr Ställe für berittenen Einheiten bauen. Benutzt auch die taktische Karte und neue Formationen um in der Schlacht erfolgreich zu sein.")
+	local f = ModBugfixes.STT[XNetworkUbiCom.Tool_GetCurrentLanguageShortName()]
+	if f then
+		f()
+	end
 
 	return true
 end
@@ -163,6 +153,26 @@ function ModBugfixes.GameCallback_SettlerKilledOverride(attackerpl, targetpl, at
 
 	---@diagnostic disable-next-line: deprecated
 	ModBugfixes.GameCallback_SettlerKilled(attackerpl, targetpl, attackerid, unpack(arg))
+end
+
+ModBugfixes.STT = {}
+function ModBugfixes.STT.de()
+	-- Erec (dadurch statt dadruch)
+	CppLogic.Logic.SetStringTableText("MenuHero4/command_auraofwar", "@color:180,180,180,255 Aura der Stärke @cr @color:255,255,255,255 Erec ruft seine Männer zur Disziplin auf. Sie schlagen dadurch härter zu.")
+	-- Meisterschütze (Schützen laufen jetzt schneller)
+	CppLogic.Logic.SetStringTableText("MenuArchery/BetterTrainingArchery_disabled", "@color:180,180,180,255 Meisterschütze @cr @color:255,255,255,255 @color:255,204,51,255 benötigt: @color:255,255,255,255 Schießanlage @cr @color:255,204,51,255 ermöglicht: @color:255,255,255,255 Schützen und Scharfschützen laufen schneller.")
+	CppLogic.Logic.SetStringTableText("MenuArchery/BetterTrainingArchery_normal", "@color:180,180,180,255 Meisterschütze @cr @color:255,255,255,255 @color:255,204,51,255 ermöglicht: @color:255,255,255,255 Schützen und Scharfschützen laufen schneller.")
+	CppLogic.Logic.SetStringTableText("MenuArchery/BetterTrainingArchery_researched", "@color:180,180,180,255 Meisterschütze @cr @color:255,255,255,255 Eure Schützen und Scharfschützen sind nun meisterhafte Läufer!")
+	-- Stehendes Heer (Schaltet keine Formation mehr frei)
+	CppLogic.Logic.SetStringTableText("MenuUniversity/StandingArmy_disabled", "@color:180,180,180,255 Stehendes Heer  @cr @color:255,204,51,255 benötigt: @color:255,255,255,255 Wehrpflicht, Festung @cr @color:255,204,51,255 ermöglicht: @color:255,255,255,255 Schießplatz, Dario Statue")
+	CppLogic.Logic.SetStringTableText("MenuUniversity/StandingArmy_normal", "@color:180,180,180,255 Stehendes Heer  @cr @color:255,204,51,255 ermöglicht: @color:255,255,255,255 Schießplatz, Dario Statue")
+	CppLogic.Logic.SetStringTableText("MenuUniversity/StandingArmy_researched", "@color:180,180,180,255 Stehendes Heer  @cr @color:255,255,255,255 Nun könnt Ihr Schießplätze bauen und dort Schützen rekrutieren.")
+	-- Taktiken (Schaltet Formationen frei)
+	CppLogic.Logic.SetStringTableText("MenuUniversity/Tactics_disabled", "@color:180,180,180,255 Taktiken  @cr @color:255,204,51,255 benötigt: @color:255,255,255,255 Stehendes Heer, Universität @cr @color:255,204,51,255 ermöglicht: @color:255,255,255,255 Stall, taktische Karte, Obelisk, Kampfformationen")
+	CppLogic.Logic.SetStringTableText("MenuUniversity/Tactics_normal", "@color:180,180,180,255 Taktiken  @cr @color:255,204,51,255 ermöglicht: @color:255,255,255,255 Stall, taktische Karte, Obelisk, Kampfformationen")
+	CppLogic.Logic.SetStringTableText("MenuUniversity/Tactics_researched", "@color:180,180,180,255 Taktiken  @cr @color:255,255,255,255 Nun könnt Ihr Ställe für berittenen Einheiten bauen. Benutzt auch die taktische Karte und neue Formationen um in der Schlacht erfolgreich zu sein.")
+	-- büchsenmacherERei
+	CppLogic.Logic.SetStringTableText("names/PB_GunsmithWorkshop1", "Büchsen @bs macherei")
 end
 
 CppLogic.API.EnableScriptTriggerEval(true)
