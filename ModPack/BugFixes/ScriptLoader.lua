@@ -15,6 +15,7 @@ function ModBugfixes.Init()
 	CppLogic.Logic.FixSnipeDamage(nil)
 	CppLogic.Logic.TaskListSetChangeTaskListCheckUncancelable(true)
 	CppLogic.Logic.EnableCannonInProgressAttraction(true)
+	CppLogic.Effect.EnableLightningFix(true)
 
 	ModBugfixes.InitUI()
 
@@ -69,6 +70,18 @@ function ModBugfixes.InitUI()
 	CppLogic.UI.WidgetMaterialSetTextureCoordinates("OvertimesButtonDisable", 4, 0.75, 0.375, 0.25, 0.125)
 	XGUIEng.SetMaterialTexture("OvertimesButtonDisable", 4, "data\\graphics\\textures\\gui\\b_generic_building.png")
 	XGUIEng.SetMaterialColor("OvertimesButtonDisable", 4, 255, 255, 255, 255)
+
+	CppLogic.UI.WidgetOverrideUpdateFunc("Thief_RechargePlaceExplosives", function() ModBugfixes.GUIUpdate_HeroAbilityEx(Abilities.AbilityPlaceKeg, "Thief_PlaceExplosives", Technologies.T_ThiefSabotage) end)
+	CppLogic.UI.WidgetOverrideUpdateFunc("Thief_PlaceExplosives", function() end)
+	CppLogic.UI.WidgetSetUpdateManualFlag("Thief_PlaceExplosives", true)
+
+	CppLogic.UI.WidgetOverrideUpdateFunc("Scout_RechargeTorches", function() ModBugfixes.GUIUpdate_HeroAbilityEx(Abilities.AbilityScoutTorches, "Scout_Torches", Technologies.T_ScoutTorches) end)
+	CppLogic.UI.WidgetOverrideUpdateFunc("Scout_Torches", function() end)
+	CppLogic.UI.WidgetSetUpdateManualFlag("Scout_Torches", true)
+
+	CppLogic.UI.WidgetOverrideUpdateFunc("Scout_RechargeFindResources", function() ModBugfixes.GUIUpdate_HeroAbilityEx(Abilities.AbilityScoutFindResources, "Scout_FindResources", Technologies.T_ScoutFindResources) end)
+	CppLogic.UI.WidgetOverrideUpdateFunc("Scout_FindResources", function() end)
+	CppLogic.UI.WidgetSetUpdateManualFlag("Scout_FindResources", true)
 end
 
 function ModBugfixes.GUIUpdate_GroupStrengthOverride()
@@ -153,6 +166,30 @@ function ModBugfixes.GameCallback_SettlerKilledOverride(attackerpl, targetpl, at
 
 	---@diagnostic disable-next-line: deprecated
 	ModBugfixes.GameCallback_SettlerKilled(attackerpl, targetpl, attackerid, unpack(arg))
+end
+
+function ModBugfixes.GUIUpdate_HeroAbilityEx(ab, b, tech)
+	local pb = XGUIEng.GetCurrentWidgetID()
+	local e = GUI.GetSelectedEntity()
+	if Logic.IsHero(e) == 1 then
+		e = HeroSelection_GetCurrentSelectedHeroID()
+	end
+	local max = Logic.HeroGetAbilityRechargeTime(e, ab)
+	local cur = Logic.HeroGetAbiltityChargeSeconds(e, ab)
+	local disa = 0
+	if cur >= max then
+		XGUIEng.SetMaterialColor(pb, 1, 0, 0, 0, 0)
+	else
+		XGUIEng.SetMaterialColor(pb, 1, 214, 44, 24, 189)
+		disa = 1
+	end
+	XGUIEng.SetProgressBarValues(pb, cur, max)
+
+	local t = Logic.GetTechnologyState(GUI.GetPlayerID(), tech)
+	if t == 0 or t == 1 or t == 2 or t == 5 or t == 3 then
+		disa = 1
+	end
+	XGUIEng.DisableButton(b, disa)
 end
 
 ModBugfixes.STT = {}

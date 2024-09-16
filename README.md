@@ -38,6 +38,7 @@ bugs fixed:
 	- evil music now is able to get triggered
 	- selecting a battleserf no longer permanetly disables formations
 	- overtimes button texture
+	- thief/scout ability buttons disable
 - StringTableTexts:
 	- de:
 		- erec ability TT typo
