@@ -39,6 +39,7 @@ bugs fixed:
 	- selecting a battleserf no longer permanetly disables formations
 	- overtimes button texture
 	- thief/scout ability buttons disable
+	- ballista/cannon towers show damage values
 - StringTableTexts:
 	- de:
 		- erec ability TT typo

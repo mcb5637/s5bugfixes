@@ -27,6 +27,10 @@ function ModBugfixes.Init()
 	GUIUpdate_SettlersInBuilding = ModBugfixes.GUIUpdate_SettlersInBuildingOverride
 	ModBugfixes.GameCallback_SettlerKilled = GameCallback_SettlerKilled
 	GameCallback_SettlerKilled = ModBugfixes.GameCallback_SettlerKilledOverride
+	ModBugfixes.GUIUpdate_Damage = GUIUpdate_Damage
+	GUIUpdate_Damage = ModBugfixes.GUIUpdate_DamageOverride
+	ModBugfixes.GUIUpdate_SelectionGeneric = GUIUpdate_SelectionGeneric
+	GUIUpdate_SelectionGeneric = ModBugfixes.GUIUpdate_SelectionGenericOverride
 
 	local f = ModBugfixes.STT[XNetworkUbiCom.Tool_GetCurrentLanguageShortName()]
 	if f then
@@ -106,14 +110,17 @@ function ModBugfixes.GameCallback_GUI_SelectionChangedOverride()
 	if not e then
 		return
 	end
-	if Logic.IsBuilding(e) == 1 and Logic.IsConstructionComplete(e) == 1 and Logic.GetUpgradeCategoryByBuildingType(Logic.GetEntityType(e))
-					== UpgradeCategories.Tavern then
-		XGUIEng.ShowWidget(gvGUI_WidgetID.BuildingTabs, 1)
-		XGUIEng.UnHighLightGroup(gvGUI_WidgetID.InGame, "BuildingMenuGroup")
-		XGUIEng.HighLightButton(gvGUI_WidgetID.ToBuildingSettlersMenu, 1)
+	if Logic.IsBuilding(e) == 1 and Logic.IsConstructionComplete(e) == 1 then
+		local ucat = Logic.GetUpgradeCategoryByBuildingType(Logic.GetEntityType(e))
 
-		XGUIEng.ShowWidget(gvGUI_WidgetID.ActivateOvertimes, 0)
-		XGUIEng.ShowWidget(gvGUI_WidgetID.QuitOvertimes, 0)
+		if ucat == UpgradeCategories.Tavern then
+			XGUIEng.ShowWidget(gvGUI_WidgetID.BuildingTabs, 1)
+			XGUIEng.UnHighLightGroup(gvGUI_WidgetID.InGame, "BuildingMenuGroup")
+			XGUIEng.HighLightButton(gvGUI_WidgetID.ToBuildingSettlersMenu, 1)
+
+			XGUIEng.ShowWidget(gvGUI_WidgetID.ActivateOvertimes, 0)
+			XGUIEng.ShowWidget(gvGUI_WidgetID.QuitOvertimes, 0)
+		end
 	elseif Logic.IsLeader(e) == 1 and Logic.GetEntityType(e) ~= Entities.PU_BattleSerf then
 		XGUIEng.ShowWidget("Commands_Leader", 1)
 	end
@@ -190,6 +197,27 @@ function ModBugfixes.GUIUpdate_HeroAbilityEx(ab, b, tech)
 		disa = 1
 	end
 	XGUIEng.DisableButton(b, disa)
+end
+
+function ModBugfixes.GUIUpdate_DamageOverride()
+	ModBugfixes.GUIUpdate_Damage()
+	local e = GUI.GetSelectedEntity()
+	local top = Logic.GetFoundationTop(e)
+	if IsValid(top) then
+		local d = Logic.GetEntityDamage(top)
+		if not d then
+			d = 0
+		end
+		XGUIEng.SetTextByValue( XGUIEng.GetCurrentWidgetID(), d, 1)
+	end
+end
+function ModBugfixes.GUIUpdate_SelectionGenericOverride()
+	ModBugfixes.GUIUpdate_SelectionGeneric()
+	local e = GUI.GetSelectedEntity()
+	local top = Logic.GetFoundationTop(e)
+	if IsValid(top) then
+		XGUIEng.ShowWidget("DetailsDamage", 1)
+	end
 end
 
 ModBugfixes.STT = {}
