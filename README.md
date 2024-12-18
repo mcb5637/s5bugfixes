@@ -29,7 +29,7 @@ bugs fixed:
 	- kala, thief armorclass
 	- beautification ucat entry (was causing wrong sell cost)
 	- diverse model shadow/selection texture fixes
-	- XD_BuildBlockScriptEntity no longer disappears when buolding nearby
+	- XD_BuildBlockScriptEntity no longer disappears when building nearby
 - lua:
 	- enabled tavern eater tab
 	- soldier display in leader UI
@@ -37,9 +37,9 @@ bugs fixed:
 	- overtimes button texture
 	- evil music now is able to get triggered
 	- selecting a battleserf no longer permanetly disables formations
-	- overtimes button texture
 	- thief/scout ability buttons disable
 	- ballista/cannon towers show damage values
+	- diverse ability recharge bars now match the location of their ability button
 - StringTableTexts:
 	- de:
 		- erec ability TT typo

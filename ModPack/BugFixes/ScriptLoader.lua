@@ -43,6 +43,14 @@ end
 function ModBugfixes.InitUI()
 	XGUIEng.SetWidgetPosition("Command_Attack", 76, 4)
 
+	XGUIEng.SetWidgetPosition("Hero1_RechargeProtectUnits", 40, 40)
+	XGUIEng.SetWidgetPosition("Hero4_RechargeAuraOfWar", 40, 40)
+	XGUIEng.SetWidgetPosition("Hero5_RechargeSummon", 40, 40)
+	XGUIEng.SetWidgetPosition("Hero7_RechargeInflictFear", 4, 40)
+	XGUIEng.SetWidgetPosition("Hero8_RechargePoison", 4, 40)
+	XGUIEng.SetWidgetPosition("Hero9_RechargeCallWolfs", 4, 40)
+	XGUIEng.SetWidgetPosition("Hero10_RechargeLongRangeAura", 40, 40)
+
 	CppLogic.UI.WidgetMaterialSetTextureCoordinates("OvertimesButtonEnable", 0, 0, 0.25, 0.25, 0.125)
 	XGUIEng.SetMaterialTexture("OvertimesButtonEnable", 0, "data\\graphics\\textures\\gui\\b_generic_building.png")
 	XGUIEng.SetMaterialColor("OvertimesButtonEnable", 0, 255, 255, 255, 255)
@@ -75,17 +83,19 @@ function ModBugfixes.InitUI()
 	XGUIEng.SetMaterialTexture("OvertimesButtonDisable", 4, "data\\graphics\\textures\\gui\\b_generic_building.png")
 	XGUIEng.SetMaterialColor("OvertimesButtonDisable", 4, 255, 255, 255, 255)
 
-	CppLogic.UI.WidgetOverrideUpdateFunc("Thief_RechargePlaceExplosives", function() ModBugfixes.GUIUpdate_HeroAbilityEx(Abilities.AbilityPlaceKeg, "Thief_PlaceExplosives", Technologies.T_ThiefSabotage) end)
-	CppLogic.UI.WidgetOverrideUpdateFunc("Thief_PlaceExplosives", function() end)
-	CppLogic.UI.WidgetSetUpdateManualFlag("Thief_PlaceExplosives", true)
+	if XGUIEng.GetWidgetID("Thief_RechargePlaceExplosives") ~= 0 then
+		CppLogic.UI.WidgetOverrideUpdateFunc("Thief_RechargePlaceExplosives", function() ModBugfixes.GUIUpdate_HeroAbilityEx(Abilities.AbilityPlaceKeg, "Thief_PlaceExplosives", Technologies.T_ThiefSabotage) end)
+		CppLogic.UI.WidgetOverrideUpdateFunc("Thief_PlaceExplosives", function() end)
+		CppLogic.UI.WidgetSetUpdateManualFlag("Thief_PlaceExplosives", true)
 
-	CppLogic.UI.WidgetOverrideUpdateFunc("Scout_RechargeTorches", function() ModBugfixes.GUIUpdate_HeroAbilityEx(Abilities.AbilityScoutTorches, "Scout_Torches", Technologies.T_ScoutTorches) end)
-	CppLogic.UI.WidgetOverrideUpdateFunc("Scout_Torches", function() end)
-	CppLogic.UI.WidgetSetUpdateManualFlag("Scout_Torches", true)
+		CppLogic.UI.WidgetOverrideUpdateFunc("Scout_RechargeTorches", function() ModBugfixes.GUIUpdate_HeroAbilityEx(Abilities.AbilityScoutTorches, "Scout_Torches", Technologies.T_ScoutTorches) end)
+		CppLogic.UI.WidgetOverrideUpdateFunc("Scout_Torches", function() end)
+		CppLogic.UI.WidgetSetUpdateManualFlag("Scout_Torches", true)
 
-	CppLogic.UI.WidgetOverrideUpdateFunc("Scout_RechargeFindResources", function() ModBugfixes.GUIUpdate_HeroAbilityEx(Abilities.AbilityScoutFindResources, "Scout_FindResources", Technologies.T_ScoutFindResources) end)
-	CppLogic.UI.WidgetOverrideUpdateFunc("Scout_FindResources", function() end)
-	CppLogic.UI.WidgetSetUpdateManualFlag("Scout_FindResources", true)
+		CppLogic.UI.WidgetOverrideUpdateFunc("Scout_RechargeFindResources", function() ModBugfixes.GUIUpdate_HeroAbilityEx(Abilities.AbilityScoutFindResources, "Scout_FindResources", Technologies.T_ScoutFindResources) end)
+		CppLogic.UI.WidgetOverrideUpdateFunc("Scout_FindResources", function() end)
+		CppLogic.UI.WidgetSetUpdateManualFlag("Scout_FindResources", true)
+	end
 end
 
 function ModBugfixes.GUIUpdate_GroupStrengthOverride()
