@@ -11,8 +11,8 @@
 	<OrnamentalItem>false</OrnamentalItem>
 	<SelectionOffsetX>0.000000e+000</SelectionOffsetX>
 	<SelectionOffsetY>0.000000e+000</SelectionOffsetY>
-	<SelectionRadius>80</SelectionRadius>
-	<SelectionTexture></SelectionTexture>
+	<SelectionRadius>1.000000e+002</SelectionRadius>
+	<SelectionTexture>Selection_hero</SelectionTexture>
 	<ShareShadowRaster>false</ShareShadowRaster>
 	<TwoPassAlphaBlending>false</TwoPassAlphaBlending>
 	<AlphaBlendHighQualityOnly>false</AlphaBlendHighQualityOnly>

@@ -30,6 +30,7 @@ bugs fixed:
 	- beautification ucat entry (was causing wrong sell cost)
 	- diverse model shadow/selection texture fixes
 	- XD_BuildBlockScriptEntity no longer disappears when building nearby
+	- barbarian hero/leader no longer share models, so both now have correct selection textures
 - lua:
 	- enabled tavern eater tab
 	- soldier display in leader UI

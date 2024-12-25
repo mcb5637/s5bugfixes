@@ -1,3 +1,5 @@
+---@diagnostic disable: inject-field
+---@type ModPack
 ModLoader.BugFixes = {
 	Manifest = {
 		EntityTypes = {
@@ -106,6 +108,7 @@ ModLoader.BugFixes = {
 			"CU_Evil_LeaderSkirmisher1",
 			"CU_Evil_SoldierSkirmisher1",
 			"CU_Evil_Queen",
+			"CU_Barbarian_Hero",
 			"CU_BanditLeaderBow1",
 			"CU_BanditSoldierBow1",
 			"PU_Thief",
@@ -136,6 +139,7 @@ ModLoader.BugFixes = {
 			"CU_SoldierOutlaw1",
 			"CU_BlackKnight_LeaderMace1",
 			"CU_BlackKnight_SoldierMace1",
+			"CU_Barbarian_Hero",
 			"CU_Barbarian_LeaderClub1",
 			"CU_Barbarian_SoldierClub1",
 			"CU_BanditLeaderSword1",
@@ -225,13 +229,14 @@ ModLoader.BugFixes = {
 	},
 }
 
---- gets called on loading your ModPack.
-function ModLoader.BugFixes.Init()
+---gets called on loading your ModPack.
+---@param mp ModpackDesc
+function ModLoader.BugFixes.Init(mp)
 	--- remove every entry not already existing (so it can safely be loaded in base)
 	ModLoader.BugFixes.ClearInvalidEntries(ModLoader.BugFixes.Manifest.EntityTypes, Entities)
 	ModLoader.BugFixes.ClearInvalidEntries(ModLoader.BugFixes.Manifest.TaskLists, TaskLists)
 	ModLoader.BugFixes.ClearInvalidEntries(ModLoader.BugFixes.Manifest.Technologies, Technologies)
-	ModLoader.BugFixes.ClearInvalidEntries(ModLoader.BugFixes.Manifest.Models, Models)
+	ModLoader.BugFixes.ClearInvalidEntries(ModLoader.BugFixes.Manifest.Models, Models, "CU_Barbarian_Hero")
 	--- merge own manifest into the main mods one
 	ModLoader.MergeManifest(ModLoader.Manifest, ModLoader.BugFixes.Manifest)
 
@@ -246,14 +251,25 @@ function ModLoader.BugFixes.Init()
 		CppLogic.Logic.SetDamageFactor(DamageClasses.DC_Bullet, ArmorClasses.ArmorClassFur, 1.5)
 	end
 	CppLogic.ModLoader.SetDamageclassesToReload()
+	mp.RedirectLayer = CppLogic.ModLoader.CreateModpackRedirectLayer("S5Extended")
+	mp.RedirectLayer:Set("graphics\\models\\CU_Barbarian_Hero.dff", "graphics\\models\\CU_Barbarian_LeaderClub1.dff")
 end
 
 ---@param mf string[]
 ---@param list table<string, number>
-function ModLoader.BugFixes.ClearInvalidEntries(mf, list)
+---@param ... string
+function ModLoader.BugFixes.ClearInvalidEntries(mf, list, ...)
+	local function except(s)
+		for _,e in ipairs(arg) do
+			if e == s then
+				return true
+			end
+		end
+		return false
+	end
 	for i = table.getn(mf), 1, -1 do
 		local e = mf[i]
-		if not list[e] then
+		if not list[e] and not except(e) then
 			table.remove(mf, i)
 		end
 	end
