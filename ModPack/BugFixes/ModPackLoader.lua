@@ -120,7 +120,7 @@ ModLoader.BugFixes = {
 			"PB_GunsmithWorkshop2",
 			"CU_Thief",
 		},
-		TaskLists = {"TL_BATTLE_RIFLE", "TL_BATTLE_BOW", "TL_BATTLE_CROSSBOW", "TL_BATTLE_HEROBOW", "TL_BATTLE_SKIRMISHER"},
+		TaskLists = {"TL_BATTLE_RIFLE", "TL_BATTLE_BOW", "TL_BATTLE_CROSSBOW", "TL_BATTLE_HEROBOW", "TL_BATTLE_SKIRMISHER", "TL_TREASURER_WORK1_START"},
 		Technologies = {"T_TownGuard", "UP2_Headquarter"},
 		Models = {
 			"PB_IronMine1",
