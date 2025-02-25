@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/mcb5637/s5xmlschema/master/effect.xsd">
+	<Logic classname="EGL::CGLEEffectProps" xsi:type="EGL__CGLEEffectProps">
+		<Class>EGL::CEffect</Class>
+		<Global>false</Global>
+		<Duration>0</Duration>
+		<SoundID></SoundID>
+		<SoundVolume>0</SoundVolume>
+		<SoundLooped>false</SoundLooped>
+	</Logic>
+	<Display classname="ED::CEffectParticleSystemProps" xsi:type="ED__CEffectParticleSystemProps">
+		<Class>ED::CEffectParticleSystem</Class>
+		<Model>Effects\XF_HouseFireSmall</Model>
+	</Display>
+</root>

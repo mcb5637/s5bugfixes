@@ -226,6 +226,13 @@ ModLoader.BugFixes = {
 			"XD_Plant5",
 			"XD_Plant6",
 		},
+		EffectTypes = {
+			"FXFire",
+			"FXFireMedium",
+			"FXFireSmall",
+			"FXFireLo",
+			"FXLightning",
+		},
 	},
 }
 
@@ -236,6 +243,7 @@ function ModLoader.BugFixes.Init(mp)
 	ModLoader.BugFixes.ClearInvalidEntries(ModLoader.BugFixes.Manifest.EntityTypes, Entities)
 	ModLoader.BugFixes.ClearInvalidEntries(ModLoader.BugFixes.Manifest.TaskLists, TaskLists)
 	ModLoader.BugFixes.ClearInvalidEntries(ModLoader.BugFixes.Manifest.Technologies, Technologies)
+	ModLoader.BugFixes.ClearInvalidEntries(ModLoader.BugFixes.Manifest.EffectTypes, GGL_Effects)
 	ModLoader.BugFixes.ClearInvalidEntries(ModLoader.BugFixes.Manifest.Models, Models, "CU_Barbarian_Hero")
 	--- merge own manifest into the main mods one
 	ModLoader.MergeManifest(ModLoader.Manifest, ModLoader.BugFixes.Manifest)
