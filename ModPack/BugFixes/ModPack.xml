@@ -8,4 +8,6 @@
 	<MainmenuMod>false</MainmenuMod>
 	<KeepArchive>false</KeepArchive>
 	<UserRequestable>true</UserRequestable>
+	<UpdateURL>https://github.com/mcb5637/s5bugfixes/releases/latest/download/BugFixes.bba</UpdateURL>
+	<VersionURL>https://github.com/mcb5637/s5bugfixes/releases/latest/download/version.txt</VersionURL>
 </root>
