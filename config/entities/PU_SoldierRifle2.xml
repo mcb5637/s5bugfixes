@@ -165,7 +165,7 @@
 			<DamageAmount>19</DamageAmount>
 			<MaxRandomDamageBonus>0</MaxRandomDamageBonus>
 			<DamageRange>8.000000e+001</DamageRange>
-			<ProjectileEffectID>FXShotRifleman</ProjectileEffectID>
+			<ProjectileEffectID>FXBulletRifleman</ProjectileEffectID>
 			<ProjectileOffsetFront>0.000000e+000</ProjectileOffsetFront>
 			<ProjectileOffsetRight>0.000000e+000</ProjectileOffsetRight>
 			<ProjectileOffsetHeight>0.000000e+000</ProjectileOffsetHeight>

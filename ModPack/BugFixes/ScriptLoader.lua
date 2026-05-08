@@ -16,6 +16,7 @@ function ModBugfixes.Init()
 	CppLogic.Logic.TaskListSetChangeTaskListCheckUncancelable(true)
 	CppLogic.Logic.EnableCannonInProgressAttraction(true)
 	CppLogic.Effect.EnableLightningFix(true)
+	CppLogic.Logic.EnableBattleWaitCancelable(true)
 
 	ModBugfixes.InitUI()
 

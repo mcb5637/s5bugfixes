@@ -33,6 +33,7 @@ bugs fixed:
 	- barbarian hero/leader no longer share models, so both now have correct selection textures
 	- treasurer work tasklist principal task
 	- fire & lightning effects no longer crash the game on loading save games
+	- leader/soldier rifle2 can now hit moving targets (cannonball -> arrow)
 - lua:
 	- enabled tavern eater tab
 	- soldier display in leader UI
