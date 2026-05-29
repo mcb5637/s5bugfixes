@@ -230,6 +230,10 @@ ModLoader.BugFixes = {
 			"FXLightning",
 		},
 	},
+	Settings = {
+		Reload = true,
+		Upgrade = true,
+	},
 }
 
 ---gets called on loading your ModPack.
@@ -241,8 +245,28 @@ function ModLoader.BugFixes.Init(mp)
 	ModLoader.BugFixes.ClearInvalidEntries(ModLoader.BugFixes.Manifest.Technologies, Technologies)
 	ModLoader.BugFixes.ClearInvalidEntries(ModLoader.BugFixes.Manifest.EffectTypes, GGL_Effects)
 	ModLoader.BugFixes.ClearInvalidEntries(ModLoader.BugFixes.Manifest.Models, Models, "CU_Barbarian_Hero")
+	if not ModLoader.BugFixes.Settings.Upgrade then
+		for i, t in ipairs(ModLoader.BugFixes.Manifest.Technologies) do
+			if t == "UP2_Headquarter" then
+				table.remove(ModLoader.BugFixes.Manifest.Technologies, i)
+				break
+			end
+		end
+	end
 	--- merge own manifest into the main mods one
 	ModLoader.MergeManifest(ModLoader.Manifest, ModLoader.BugFixes.Manifest)
+	if not ModLoader.BugFixes.Settings.Reload then
+		---@type ManifestMergeOperation
+		local m = {
+			AppliesTo = {"TL_BATTLE_RIFLE", "TL_BATTLE_BOW", "TL_BATTLE_CROSSBOW", "TL_BATTLE_HEROBOW", "TL_BATTLE_SKIRMISHER", "TL_BATTLE_VEHICLE"},
+			MergeFunc = function(obj, type)
+				obj.Task:AsListAccess():Remove(function(elem)
+					return elem:AsObjectAccess().TaskType:AsFieldAccess():Get() == 175 --"TASK_WAIT_FOR_LATEST_ATTACK"
+				end)
+			end,
+		}
+		table.insert(ModLoader.Manifest.TaskListMerges, m)
+	end
 
 	-- do it here, so any manifest change can override it again
 	CppLogic.Logic.SetDamageFactor(DamageClasses.DC_Strike, ArmorClasses.ArmorClassFur, 0.9)
@@ -255,7 +279,7 @@ function ModLoader.BugFixes.Init(mp)
 		CppLogic.Logic.SetDamageFactor(DamageClasses.DC_Bullet, ArmorClasses.ArmorClassFur, 1.5)
 	end
 	CppLogic.ModLoader.SetDamageclassesToReload()
-	mp.RedirectLayer = CppLogic.ModLoader.CreateModpackRedirectLayer("S5Extended")
+	mp.RedirectLayer = CppLogic.ModLoader.CreateModpackRedirectLayer("S5BugfixesRedirect")
 	mp.RedirectLayer:Set("graphics\\models\\CU_Barbarian_Hero.dff", "graphics\\models\\CU_Barbarian_LeaderClub1.dff")
 end
 

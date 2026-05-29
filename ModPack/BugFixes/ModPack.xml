@@ -5,6 +5,20 @@
 	<MainmenuPath></MainmenuPath>
 	<Version>1.0.1</Version>
 	<Description>collection of bugfixes</Description>
+	<Settings>
+		<Key>Reload</Key>
+		<Name>@center Reload Fix</Name>
+		<Tooltip>Prevents canceling reload time.</Tooltip>
+		<Options>true</Options>
+		<Options>false</Options>
+	</Settings>
+	<Settings>
+		<Key>Upgrade</Key>
+		<Name>@center HQ Upgrade Fix</Name>
+		<Tooltip>Changes the Conditions for HQ upgrade 2 to count distinct refiner upgrade categories instead of building types.</Tooltip>
+		<Options>true</Options>
+		<Options>false</Options>
+	</Settings>
 	<DataMod>true</DataMod>
 	<ScriptMod>true</ScriptMod>
 	<MainmenuMod>false</MainmenuMod>
