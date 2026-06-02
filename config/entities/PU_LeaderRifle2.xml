@@ -6,7 +6,6 @@
 		<Category>Leader</Category>
 		<Category>Rifle</Category>
 		<Category>LongRange</Category>
-		<Category>SplashDamage</Category>
 		<ApproachPos>
 			<X>0.000000e+000</X>
 			<Y>0.000000e+000</Y>
@@ -170,7 +169,7 @@
 			<DamageClass>DC_Bullet</DamageClass>
 			<DamageAmount>19</DamageAmount>
 			<MaxRandomDamageBonus>0</MaxRandomDamageBonus>
-			<DamageRange>8.000000e+001</DamageRange>
+			<DamageRange>-1</DamageRange>
 			<ProjectileEffectID>FXBulletRifleman</ProjectileEffectID>
 			<ProjectileOffsetFront>0.000000e+000</ProjectileOffsetFront>
 			<ProjectileOffsetRight>0.000000e+000</ProjectileOffsetRight>

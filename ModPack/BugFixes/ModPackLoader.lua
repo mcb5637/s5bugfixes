@@ -261,7 +261,11 @@ function ModLoader.BugFixes.Init(mp)
 			AppliesTo = {"TL_BATTLE_RIFLE", "TL_BATTLE_BOW", "TL_BATTLE_CROSSBOW", "TL_BATTLE_HEROBOW", "TL_BATTLE_SKIRMISHER", "TL_BATTLE_VEHICLE"},
 			MergeFunc = function(obj, type)
 				obj.Task:AsListAccess():Remove(function(elem)
-					return elem:AsObjectAccess().TaskType:AsFieldAccess():Get() == 175 --"TASK_WAIT_FOR_LATEST_ATTACK"
+					if elem:AsObjectAccess().TaskType:AsFieldAccess():Get() == 175 then --"TASK_WAIT_FOR_LATEST_ATTACK"
+						elem:AsObjectAccess():New(nil, true)
+						return true
+					end
+					return false
 				end)
 			end,
 		}
