@@ -34,6 +34,7 @@ bugs fixed:
 	- treasurer work tasklist principal task
 	- fire & lightning effects no longer crash the game on loading save games
 	- leader/soldier rifle2 can now hit moving targets (cannonball -> arrow)
+	- hero5 add LongRange entitycategory
 - lua:
 	- enabled tavern eater tab
 	- soldier display in leader UI
