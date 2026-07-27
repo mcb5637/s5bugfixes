@@ -3,7 +3,7 @@
 	<Logic classname="EGL::CGLEEffectProps" xsi:type="EGL__CGLEEffectProps">
 		<Class>EGL::CEffect</Class>
 		<Global>false</Global>
-		<Duration>0</Duration>
+		<Duration>0.1</Duration>
 		<SoundID></SoundID>
 		<SoundVolume>0</SoundVolume>
 		<SoundLooped>false</SoundLooped>

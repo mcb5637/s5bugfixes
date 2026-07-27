@@ -285,6 +285,10 @@ function ModLoader.BugFixes.Init(mp)
 	CppLogic.ModLoader.SetDamageclassesToReload()
 	mp.RedirectLayer = CppLogic.ModLoader.CreateModpackRedirectLayer("S5BugfixesRedirect")
 	mp.RedirectLayer:Set("graphics\\models\\CU_Barbarian_Hero.dff", "graphics\\models\\CU_Barbarian_LeaderClub1.dff")
+
+	function Logic.Lightning(px, py)
+		Logic.CreateEffect(GGL_Effects.FXLightning, px, py, 0)
+	end
 end
 
 ---@param mf string[]
