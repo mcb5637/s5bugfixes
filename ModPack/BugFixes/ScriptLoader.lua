@@ -252,5 +252,5 @@ function ModBugfixes.STT.de()
 end
 
 CppLogic.API.EnableScriptTriggerEval(true)
-Trigger.RequestTrigger(Events.CPPLOGIC_EVENT_ON_MAP_STARTED, nil, "ModBugfixes.Init", 1)
-Trigger.RequestTrigger(Events.CPPLOGIC_EVENT_ON_SAVEGAME_LOADED, nil, "ModBugfixes.InitUI", 1)
+Trigger.RequestTriggerBackup(Events.CPPLOGIC_EVENT_ON_MAP_STARTED, nil, "ModBugfixes.Init", 1)
+Trigger.RequestTriggerBackup(Events.CPPLOGIC_EVENT_ON_SAVEGAME_LOADED, nil, "ModBugfixes.InitUI", 1)
