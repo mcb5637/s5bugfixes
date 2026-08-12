@@ -195,7 +195,7 @@
 			<TrainingTaskList>TL_TRAIN2_BARRACKS2</TrainingTaskList>
 			<TrainingTaskList>TL_TRAIN3_BARRACKS2</TrainingTaskList>
 			<LeaveTaskList>TL_LEAVE_BARRACKS</LeaveTaskList>
-			<TrainingTime>3.000000e+001</TrainingTime>
+			<TrainingTime>2.000000e+001</TrainingTime>
 		</Logic>
 	</Behavior>
 </root>

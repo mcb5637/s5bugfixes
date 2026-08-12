@@ -35,7 +35,7 @@ bugs fixed:
 	- fire & lightning effects no longer crash the game on loading save games
 	- leader/soldier rifle2 can now hit moving targets (cannonball -> arrow)
 	- hero5 add LongRange entitycategory
-	- archery2 fixed training time
+	- archery2/barracks2 fixed training time
 - lua:
 	- enabled tavern eater tab
 	- soldier display in leader UI
