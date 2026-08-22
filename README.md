@@ -46,6 +46,7 @@ bugs fixed:
 	- thief/scout ability buttons disable
 	- ballista/cannon towers show damage values
 	- diverse ability recharge bars now match the location of their ability button
+	- leader formations & commands work for more than 20 selected leaders
 - StringTableTexts:
 	- de:
 		- erec ability TT typo

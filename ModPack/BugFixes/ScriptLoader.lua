@@ -32,6 +32,8 @@ function ModBugfixes.Init()
 	GUIUpdate_Damage = ModBugfixes.GUIUpdate_DamageOverride
 	ModBugfixes.GUIUpdate_SelectionGeneric = GUIUpdate_SelectionGeneric
 	GUIUpdate_SelectionGeneric = ModBugfixes.GUIUpdate_SelectionGenericOverride
+	GUIAction_ChangeFormation = ModBugfixes.GUIAction_ChangeFormation
+	GUIAction_Command = ModBugfixes.GUIAction_Command
 
 	local f = ModBugfixes.STT[XNetworkUbiCom.Tool_GetCurrentLanguageShortName()]
 	if f then
@@ -90,15 +92,18 @@ function ModBugfixes.InitUI()
 	XGUIEng.SetMaterialColor("OvertimesButtonDisable", 4, 255, 255, 255, 255)
 
 	if XGUIEng.GetWidgetID("Thief_RechargePlaceExplosives") ~= 0 then
-		CppLogic.UI.WidgetOverrideUpdateFunc("Thief_RechargePlaceExplosives", function() ModBugfixes.GUIUpdate_HeroAbilityEx(Abilities.AbilityPlaceKeg, "Thief_PlaceExplosives", Technologies.T_ThiefSabotage) end)
+		CppLogic.UI.WidgetOverrideUpdateFunc("Thief_RechargePlaceExplosives",
+			function() ModBugfixes.GUIUpdate_HeroAbilityEx(Abilities.AbilityPlaceKeg, "Thief_PlaceExplosives", Technologies.T_ThiefSabotage) end)
 		CppLogic.UI.WidgetOverrideUpdateFunc("Thief_PlaceExplosives", function() end)
 		CppLogic.UI.WidgetSetUpdateManualFlag("Thief_PlaceExplosives", true)
 
-		CppLogic.UI.WidgetOverrideUpdateFunc("Scout_RechargeTorches", function() ModBugfixes.GUIUpdate_HeroAbilityEx(Abilities.AbilityScoutTorches, "Scout_Torches", Technologies.T_ScoutTorches) end)
+		CppLogic.UI.WidgetOverrideUpdateFunc("Scout_RechargeTorches",
+			function() ModBugfixes.GUIUpdate_HeroAbilityEx(Abilities.AbilityScoutTorches, "Scout_Torches", Technologies.T_ScoutTorches) end)
 		CppLogic.UI.WidgetOverrideUpdateFunc("Scout_Torches", function() end)
 		CppLogic.UI.WidgetSetUpdateManualFlag("Scout_Torches", true)
 
-		CppLogic.UI.WidgetOverrideUpdateFunc("Scout_RechargeFindResources", function() ModBugfixes.GUIUpdate_HeroAbilityEx(Abilities.AbilityScoutFindResources, "Scout_FindResources", Technologies.T_ScoutFindResources) end)
+		CppLogic.UI.WidgetOverrideUpdateFunc("Scout_RechargeFindResources",
+			function() ModBugfixes.GUIUpdate_HeroAbilityEx(Abilities.AbilityScoutFindResources, "Scout_FindResources", Technologies.T_ScoutFindResources) end)
 		CppLogic.UI.WidgetOverrideUpdateFunc("Scout_FindResources", function() end)
 		CppLogic.UI.WidgetSetUpdateManualFlag("Scout_FindResources", true)
 	end
@@ -167,9 +172,9 @@ function ModBugfixes.GUIUpdate_SettlersInBuildingOverride()
 
 	XGUIEng.ShowAllSubWidgets(gvGUI_WidgetID.WorkerButtonContainer, 0)
 	for i = 1, max, 1 do
-		local ButtonName = "WorkerContainer" .. i
-		XGUIEng.ShowWidget(ButtonName, 1)
-		XGUIEng.SetBaseWidgetUserVariable(ButtonName, 0, tab[i + 1])
+		local name = "WorkerContainer"..i
+		XGUIEng.ShowWidget(name, 1)
+		XGUIEng.SetBaseWidgetUserVariable(name, 0, tab[i + 1])
 	end
 end
 
@@ -224,9 +229,10 @@ function ModBugfixes.GUIUpdate_DamageOverride()
 		if not d then
 			d = 0
 		end
-		XGUIEng.SetTextByValue( XGUIEng.GetCurrentWidgetID(), d, 1)
+		XGUIEng.SetTextByValue(XGUIEng.GetCurrentWidgetID(), d, 1)
 	end
 end
+
 function ModBugfixes.GUIUpdate_SelectionGenericOverride()
 	ModBugfixes.GUIUpdate_SelectionGeneric()
 	local e = GUI.GetSelectedEntity()
@@ -236,22 +242,66 @@ function ModBugfixes.GUIUpdate_SelectionGenericOverride()
 	end
 end
 
+function ModBugfixes.GUIAction_ChangeFormation(form)
+	if form < 1 or form > 9 then
+		return
+	end
+	for _, id in ipairs{GUI.GetSelectedEntities()} do
+		GUI.LeaderChangeFormationType(id, form)
+	end
+	GUI.SendChangeFormationFeedbackEvent(form)
+end
+
+function ModBugfixes.GUIAction_Command(cmd)
+	GUI.CancelState()
+	local fun = nil
+	if cmd == 1 then
+		GUI.ActivateAttackMoveCommandState()
+	elseif cmd == 2 then
+		fun = GUI.SettlerStand
+	elseif cmd == 3 then
+		fun = GUI.SettlerDefend
+	elseif cmd == 4 then
+		GUI.ActivatePatrolCommandState()
+	elseif cmd == 5 then
+		GUI.ActivateGuardCommandState()
+	elseif cmd == 6 then
+		fun = GUI.SettlerAggressive
+	end
+
+	if fun then
+		for _,id in ipairs{GUI.GetSelectedEntities()} do
+			fun(id)
+		end
+	end
+end
+
 ModBugfixes.STT = {}
 function ModBugfixes.STT.de()
 	-- Erec (dadurch statt dadruch)
-	CppLogic.Logic.SetStringTableText("MenuHero4/command_auraofwar", "@color:180,180,180,255 Aura der Stärke @cr @color:255,255,255,255 Erec ruft seine Männer zur Disziplin auf. Sie schlagen dadurch härter zu.")
+	CppLogic.Logic.SetStringTableText("MenuHero4/command_auraofwar",
+		"@color:180,180,180,255 Aura der Stärke @cr @color:255,255,255,255 Erec ruft seine Männer zur Disziplin auf. Sie schlagen dadurch härter zu.")
 	-- Meisterschütze (Schützen laufen jetzt schneller)
-	CppLogic.Logic.SetStringTableText("MenuArchery/BetterTrainingArchery_disabled", "@color:180,180,180,255 Meisterschütze @cr @color:255,255,255,255 @color:255,204,51,255 benötigt: @color:255,255,255,255 Schießanlage @cr @color:255,204,51,255 ermöglicht: @color:255,255,255,255 Schützen und Scharfschützen laufen schneller.")
-	CppLogic.Logic.SetStringTableText("MenuArchery/BetterTrainingArchery_normal", "@color:180,180,180,255 Meisterschütze @cr @color:255,255,255,255 @color:255,204,51,255 ermöglicht: @color:255,255,255,255 Schützen und Scharfschützen laufen schneller.")
-	CppLogic.Logic.SetStringTableText("MenuArchery/BetterTrainingArchery_researched", "@color:180,180,180,255 Meisterschütze @cr @color:255,255,255,255 Eure Schützen und Scharfschützen sind nun meisterhafte Läufer!")
+	CppLogic.Logic.SetStringTableText("MenuArchery/BetterTrainingArchery_disabled",
+		"@color:180,180,180,255 Meisterschütze @cr @color:255,255,255,255 @color:255,204,51,255 benötigt: @color:255,255,255,255 Schießanlage @cr @color:255,204,51,255 ermöglicht: @color:255,255,255,255 Schützen und Scharfschützen laufen schneller.")
+	CppLogic.Logic.SetStringTableText("MenuArchery/BetterTrainingArchery_normal",
+		"@color:180,180,180,255 Meisterschütze @cr @color:255,255,255,255 @color:255,204,51,255 ermöglicht: @color:255,255,255,255 Schützen und Scharfschützen laufen schneller.")
+	CppLogic.Logic.SetStringTableText("MenuArchery/BetterTrainingArchery_researched",
+		"@color:180,180,180,255 Meisterschütze @cr @color:255,255,255,255 Eure Schützen und Scharfschützen sind nun meisterhafte Läufer!")
 	-- Stehendes Heer (Schaltet keine Formation mehr frei)
-	CppLogic.Logic.SetStringTableText("MenuUniversity/StandingArmy_disabled", "@color:180,180,180,255 Stehendes Heer  @cr @color:255,204,51,255 benötigt: @color:255,255,255,255 Wehrpflicht, Festung @cr @color:255,204,51,255 ermöglicht: @color:255,255,255,255 Schießplatz, Dario Statue")
-	CppLogic.Logic.SetStringTableText("MenuUniversity/StandingArmy_normal", "@color:180,180,180,255 Stehendes Heer  @cr @color:255,204,51,255 ermöglicht: @color:255,255,255,255 Schießplatz, Dario Statue")
-	CppLogic.Logic.SetStringTableText("MenuUniversity/StandingArmy_researched", "@color:180,180,180,255 Stehendes Heer  @cr @color:255,255,255,255 Nun könnt Ihr Schießplätze bauen und dort Schützen rekrutieren.")
+	CppLogic.Logic.SetStringTableText("MenuUniversity/StandingArmy_disabled",
+		"@color:180,180,180,255 Stehendes Heer  @cr @color:255,204,51,255 benötigt: @color:255,255,255,255 Wehrpflicht, Festung @cr @color:255,204,51,255 ermöglicht: @color:255,255,255,255 Schießplatz, Dario Statue")
+	CppLogic.Logic.SetStringTableText("MenuUniversity/StandingArmy_normal",
+		"@color:180,180,180,255 Stehendes Heer  @cr @color:255,204,51,255 ermöglicht: @color:255,255,255,255 Schießplatz, Dario Statue")
+	CppLogic.Logic.SetStringTableText("MenuUniversity/StandingArmy_researched",
+		"@color:180,180,180,255 Stehendes Heer  @cr @color:255,255,255,255 Nun könnt Ihr Schießplätze bauen und dort Schützen rekrutieren.")
 	-- Taktiken (Schaltet Formationen frei)
-	CppLogic.Logic.SetStringTableText("MenuUniversity/Tactics_disabled", "@color:180,180,180,255 Taktiken  @cr @color:255,204,51,255 benötigt: @color:255,255,255,255 Stehendes Heer, Universität @cr @color:255,204,51,255 ermöglicht: @color:255,255,255,255 Stall, taktische Karte, Obelisk, Kampfformationen")
-	CppLogic.Logic.SetStringTableText("MenuUniversity/Tactics_normal", "@color:180,180,180,255 Taktiken  @cr @color:255,204,51,255 ermöglicht: @color:255,255,255,255 Stall, taktische Karte, Obelisk, Kampfformationen")
-	CppLogic.Logic.SetStringTableText("MenuUniversity/Tactics_researched", "@color:180,180,180,255 Taktiken  @cr @color:255,255,255,255 Nun könnt Ihr Ställe für berittenen Einheiten bauen. Benutzt auch die taktische Karte und neue Formationen um in der Schlacht erfolgreich zu sein.")
+	CppLogic.Logic.SetStringTableText("MenuUniversity/Tactics_disabled",
+		"@color:180,180,180,255 Taktiken  @cr @color:255,204,51,255 benötigt: @color:255,255,255,255 Stehendes Heer, Universität @cr @color:255,204,51,255 ermöglicht: @color:255,255,255,255 Stall, taktische Karte, Obelisk, Kampfformationen")
+	CppLogic.Logic.SetStringTableText("MenuUniversity/Tactics_normal",
+		"@color:180,180,180,255 Taktiken  @cr @color:255,204,51,255 ermöglicht: @color:255,255,255,255 Stall, taktische Karte, Obelisk, Kampfformationen")
+	CppLogic.Logic.SetStringTableText("MenuUniversity/Tactics_researched",
+		"@color:180,180,180,255 Taktiken  @cr @color:255,255,255,255 Nun könnt Ihr Ställe für berittenen Einheiten bauen. Benutzt auch die taktische Karte und neue Formationen um in der Schlacht erfolgreich zu sein.")
 	-- büchsenmacherERei
 	CppLogic.Logic.SetStringTableText("names/PB_GunsmithWorkshop1", "Büchsen @bs macherei")
 end
