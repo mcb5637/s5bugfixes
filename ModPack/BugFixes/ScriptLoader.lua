@@ -3,7 +3,7 @@ function ModBugfixes.Init()
 	CppLogic.Entity.Settler.EnableConversionHook()
 	CppLogic.Logic.SetPaydayCallback()
 	CppLogic.Combat.EnableAoEProjectileFix()
-	CppLogic.Logic.EnableAllHurtEntityTrigger(true)
+	CppLogic.Logic.EnableHurtFixes()
 	CppLogic.Combat.EnableCamoFix()
 	CppLogic.Logic.EnableExperienceClassFix(true)
 	CppLogic.Logic.EnableBuildOnMovementFix(true)
@@ -39,6 +39,11 @@ function ModBugfixes.Init()
 	end
 
 	return true
+end
+
+function ModBugfixes.ReInit()
+	CppLogic.Logic.EnableHurtFixes()
+	ModBugfixes.InitUI()
 end
 
 function ModBugfixes.InitUI()
@@ -253,4 +258,4 @@ end
 
 CppLogic.API.EnableScriptTriggerEval(true)
 Trigger.RequestTriggerBackup(Events.CPPLOGIC_EVENT_ON_MAP_STARTED, nil, "ModBugfixes.Init", 1)
-Trigger.RequestTriggerBackup(Events.CPPLOGIC_EVENT_ON_SAVEGAME_LOADED, nil, "ModBugfixes.InitUI", 1)
+Trigger.RequestTriggerBackup(Events.CPPLOGIC_EVENT_ON_SAVEGAME_LOADED, nil, "ModBugfixes.ReInit", 1)
