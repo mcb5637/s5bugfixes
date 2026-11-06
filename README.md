@@ -4,38 +4,38 @@ put into settler dir/ModPacks/
 
 bugs fixed:
 - c++:
-	- aoe damage
+	- aoe damage (cannon damageclass/armorclass factor, can no longer damage allied if cannon dies)
 	- camo not canceled by being hit by arrows
-	- experience lvl1 now works
-	- experience miss chance boni work
+	- experience lvl1 now works (did nothing before)
+	- experience miss chance boni work (did nothing, cause it is a negative value)
 	- placing a building on top of a moving entity no longer canceles movement
 	- leader regenerate troop hp, if at full health
 	- heal rangedeffect heals troop hp
-	- snipe task now actually fires a projectile
+	- snipe task now actually fires a projectile (did instant damage before)
 	- set tasklist can no longer cancel uncancelable tasks
 	- foundries producing cannons block the cannons future VC space
 - xml:
-	- armor of soldiers
-	- cannon3/4 damageclass
-	- foundry movement tech
+	- armor of soldiers (was 0 & no armorclass, now same as leader)
+	- cannon3/4 damageclass (1 & 3 are good against units, 2 & 4 against buildings, as advertised)
+	- foundry movement tech (did nothing before)
 	- reload bug (rapidfire)
-	- fur damageclass factor
-	- town guard tech
+	- fur damageclass factor (due to a typo, factor was 0)
+	- town guard tech (did nothing before, due to the tech existing 2 times, one to be researched, the other had an actual effect)
 	- hq upgrade 2 building requirements (bank now counts, but different levels of the same building don't)
 	- battleserf affected by serf techs
 	- CU_Thief now responds to move commands
-	- worker type of tavern2
-	- bandit leader sword onscreen icon, barracks upgradecategory
+	- worker type of tavern2 (was farmer instead of barkeeper)
+	- bandit leader sword onscreen icon, barracks upgradecategory (so you can buy soldiers for them)
 	- kala, thief armorclass
 	- beautification ucat entry (was causing wrong sell cost)
 	- diverse model shadow/selection texture fixes
 	- XD_BuildBlockScriptEntity no longer disappears when building nearby
 	- barbarian hero/leader no longer share models, so both now have correct selection textures
-	- treasurer work tasklist principal task
+	- treasurer work tasklist principal task (was causing a wrong worker cycle icon)
 	- fire & lightning effects no longer crash the game on loading save games
 	- leader/soldier rifle2 can now hit moving targets (cannonball -> arrow)
-	- hero5 add LongRange entitycategory
-	- archery2/barracks2 fixed training time
+	- hero5 add LongRange entitycategory (now affected by drakes aura)
+	- archery2/barracks2 fixed training time (same as lvl1, was higher before)
 - lua:
 	- enabled tavern eater tab
 	- soldier display in leader UI
